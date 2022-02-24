@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <p>Actors</p>
+        {% if messages %}
+        {% for message in messages  %}
+          <p style="color: red"> {{ message  }} </p>
+        {% endfor %}
+        {% endif %}
+    <ul>
+            {% for movie_actor in movie_actors %}
+                <li>{{ movie_actor.actor.name }} {{ movie_actor.actor.surname }} <a href="/delete_actor/{{ movie_actor.id }}">delete</a> </li>
+            {% endfor %}
+    </ul>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <input type="hidden" name="movie_id" value="{{ movie.id }}"/>
+            <p>Actors</p>
+        <select name="actor">
+            {% for actor in actors %}
+            <option value="{{ actor.id }}">{{ actor.name }} {{ actor.surname }}</option>
+            {% endfor %}
+        </select>
+    <input type="submit" value="add">
+    </form>
+    <form action="/movie_details/{{ movie.id }}">
+        <input type="submit" value="back to movie details" />
+    </form>
+
+</body>
+</html>

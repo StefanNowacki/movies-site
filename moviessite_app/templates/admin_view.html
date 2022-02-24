@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+        <form method="get">
+        <label>
+            <input type="text" name="movie_name" value="">
+        </label>
+        <input type="submit" value="search">
+    </form>
+    <form action="add_movie">
+        <input class="btn btn-success" type="submit" value="add movie">
+    </form>
+    {% for movie in movies %}
+    <p>{{ movie.title }} rating {{ movie.rating }}
+        <a href="movie_details/{{ movie.id }}">details</a>
+        <a href="edit_movie/{{ movie.id }}">edit</a>
+        <a href="delete_movie/{{ movie.id }}">delete</a>
+    </p>
+    {% endfor %}
+{% endblock %}

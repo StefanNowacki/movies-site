@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Movie</title>
+</head>
+<body>
+    <button type="submit"><a href="/admin_view">back to admin panel</a></button>
+{% block content %}
+<form action="" method="POST">
+    {% csrf_token %}
+    <p>title</p>
+    <input type="text" value="{{ movie.title }}" name="title">
+
+    <p>Director</p>
+        <select name="director">
+            {% for director in directors  %}
+            <option value="{{ director.id }}">{{ director.name }} {{ director.surname }}</option>
+            {% endfor %}
+        </select>
+
+    <p>Actors</p>
+            {% if messages %}
+        {% for message in messages  %}
+          <p style="color: red"> {{ message  }} </p>
+        {% endfor %}
+        {% endif %}
+        <select multiple name="actors">
+            {% for actor in actors %}
+            <option value="{{ actor.id }}">{{ actor.name }} {{ actor.surname }}</option>
+            {% endfor %}
+        </select>
+
+    <p>Rating</p>
+        <select name="rating">
+            {% for rating in ratings %}
+            <option value="{{ rating.0 }}">{{ rating.1}}</option>
+            {% endfor %}
+        </select>
+
+    <p>Description</p>
+    <textarea name="description"></textarea>
+    <input type="submit" value="ok">
+{% endblock %}
+
+
+
+</form>
+
+</body>
+</html>

@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block content %}
+{#    <div class="row top-box">#}
+{#      <div class="col-md-10">#}
+{#          <div class="col-md-2">#}
+{#        <form action="/">#}
+{#          <input class="btn btn-info" type="submit" value="main page">#}
+{#        </form>#}
+{#              </div>#}
+{#      </div>#}
+{#    </div>#}
+
+{#    <div class="container-fluid top_box">#}
+{#    <div class="row">#}
+{#    <div class="col-md-10">#}
+{#        </div>#}
+{#        <div class="col-md-2">#}
+{#            <a class="btn btn-dark" href="/">main page</a>#}
+{#        </div>#}
+{#    </div>#}
+{#</div>#}
+    <h2>Movie details</h2>
+    <br>
+    <h4>Title</h4>
+    <p>{{movie.title}}</p>
+    <br>
+    <h4>Description</h4>
+    <p>{{movie.description}}</p>
+    <br>
+    <h4>Rating</h4>
+    <p>{{movie.rating}}</p>
+    <br>
+    <h4>Director</h4>
+        <p>{{movie.director.name}} {{ movie.director.surname }}</p>
+    <br>
+    <h4>Actors</h4>
+        {% for actor in actors %}
+            <p>{{ actor.actor.name}} {{actor.actor.surname}} </p>
+        {% endfor %}
+    {% if user.is_superuser %}
+    <a href="/edit_movie_actors/{{ movie.id }}"> edit</a>
+    {% endif %}
+    <br>
+    <br>
+    <h4>Comment section</h4>
+    {% for comment in comments %}
+        <p>{{ comment.description }}</p>
+    {% endfor %}
+    <form action="" method="POST">
+        {% csrf_token %}
+        <textarea name="comment"></textarea>
+        <button type="submit">add comment</button>
+    </form>
+{% endblock %}

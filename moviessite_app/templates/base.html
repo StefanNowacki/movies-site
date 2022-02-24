@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Movies Informator</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+        body{
+            background: antiquewhite;
+        }
+        .top_box{
+           background: antiquewhite;
+        }
+    </style>
+</head>
+<body>
+<div class="container-fluid top_box">
+    <div class="row">
+    <div class="col-md-10">
+{#    <h1>Movies Informator</h1>#}
+        </div>
+        <div class="col-md-2">
+            <a class="btn btn-dark" href="/accounts/logout">logout</a>
+            <a class="btn btn-info" href="/accounts/login">log in</a>
+            <a class="btn btn-dark" href="/">main page</a>
+        </div>
+    </div>
+</div>
+
+
+<div class="container-fluid">
+{% block content %}
+
+
+{% endblock %}
+</div>
+</body>
+</html>
