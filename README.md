@@ -19,3 +19,5 @@ Install Python 3 in your computer, and make sure to set environment variable cor
 Install Django for the Python environment. The easiest way is to use pip by running pip install django.
 
 Open a terminal, input command: python manage.py runserver 
+
+PROJECT'S CODE YOU CAN SEE ON THE MASTER BRANCH
